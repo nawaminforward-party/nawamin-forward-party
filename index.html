@@ -113,232 +113,300 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
+    
+    /* Mobile Menu Transition */
+    #mobile-menu {
+        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+    }
+    #mobile-menu.open {
+        max-height: 300px; /* Adjust based on content height */
+        opacity: 1;
+    }
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full">
-  <div class="w-full h-full overflow-auto"><nav id="navbar" class="sticky top-0 z-50 shadow-sm glass-navbar">
-    <div class="max-w-7xl mx-auto px-6 py-4">
+  <div class="w-full h-full overflow-auto">
+    
+   <nav id="navbar" class="sticky top-0 z-50 shadow-sm glass-navbar">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-4">
      <div class="flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-       <img id="navbar-logo-img" class="w-15 h-15 object-contain" style="display: none;" alt="Party Logo">
-       <svg id="navbar-logo-default" class="w-10 h-10" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <div class="flex items-center space-x-3 shrink-0">
+       <img id="navbar-logo-img" class="w-12 h-12 md:w-15 md:h-15 object-contain" style="display: none;" alt="Party Logo">
+       <svg id="navbar-logo-default" class="w-8 h-8 md:w-10 md:h-10" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
        </svg>
        <div>
-        <h1 id="nav-org-name" class="font-bold text-2xl md:text-3xl">Nawamin Forward Party</h1>
-        <p id="nav-tagline" class="opacity-80 text-base md:text-lg">30 มกราคมนี้ เลือกเบอร์ 1</p>
+        <h1 id="nav-org-name" class="font-bold text-xl md:text-3xl leading-tight">Nawamin Forward Party</h1>
+        <p id="nav-tagline" class="opacity-80 text-xs md:text-base">30 มกราคมนี้ เลือกเบอร์ 1</p>
        </div>
       </div>
-      <div class="flex space-x-8"><button class="nav-link active font-medium text-lg" data-page="home" onclick="showPage('home')">หน้าหลัก</button> <button class="nav-link font-medium text-lg" data-page="policies" onclick="showPage('policies')">นโยบาย</button> <button class="nav-link font-medium text-lg" data-page="team" onclick="showPage('team')">สมาชิก</button>
+      
+      <div class="hidden md:flex space-x-8">
+        <button class="nav-link active font-medium text-lg" data-page="home" onclick="showPage('home')">หน้าหลัก</button> 
+        <button class="nav-link font-medium text-lg" data-page="policies" onclick="showPage('policies')">นโยบาย</button> 
+        <button class="nav-link font-medium text-lg" data-page="team" onclick="showPage('team')">สมาชิก</button>
       </div>
+
+      <div class="md:hidden">
+          <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="p-2 focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+      </div>
+     </div>
+     
+     <div id="mobile-menu" class="md:hidden flex flex-col space-y-4 mt-2 pb-2">
+        <button class="nav-link-mobile font-medium text-lg text-left py-2 border-b border-gray-100/20" onclick="showPage('home'); toggleMobileMenu()">หน้าหลัก</button> 
+        <button class="nav-link-mobile font-medium text-lg text-left py-2 border-b border-gray-100/20" onclick="showPage('policies'); toggleMobileMenu()">นโยบาย</button> 
+        <button class="nav-link-mobile font-medium text-lg text-left py-2" onclick="showPage('team'); toggleMobileMenu()">สมาชิก</button>
      </div>
     </div>
-   </nav><div id="page-home"><section id="hero" class="py-24 px-6">
+   </nav>
+
+   <div id="page-home">
+    <section id="hero" class="py-16 md:py-24 px-4 md:px-6">
      <div class="max-w-5xl mx-auto text-center slide-in">
-      <h2 id="hero-title" class="font-bold mb-6 text-5xl md:text-7xl">ก้าวไปข้างหน้าด้วยกัน</h2>
-      <p id="hero-subtitle" class="mb-10 opacity-90 text-2xl md:text-3xl">พัฒนาโรงเรียนให้ดีขึ้น เพื่อนักเรียนทุกคน</p><button id="cta-button" class="px-10 py-5 text-xl rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all hover:scale-105"> ดูนโยบายของเรา </button>
+      <h2 id="hero-title" class="font-bold mb-4 md:mb-6 text-4xl md:text-7xl leading-tight">ก้าวไปข้างหน้าด้วยกัน</h2>
+      <p id="hero-subtitle" class="mb-8 md:mb-10 opacity-90 text-xl md:text-3xl">พัฒนาโรงเรียนให้ดีขึ้น เพื่อนักเรียนทุกคน</p>
+      <button id="cta-button" class="w-full md:w-auto px-10 py-4 md:py-5 text-lg md:text-xl rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all hover:scale-105"> ดูนโยบายของเรา </button>
      </div>
-    </section><section id="features-section" class="py-20 px-6">
+    </section>
+
+    <section id="features-section" class="py-12 md:py-20 px-4 md:px-6">
      <div class="max-w-6xl mx-auto">
-      <h3 id="features-heading" class="text-center font-bold mb-16 fade-in text-4xl">จุดเด่นของเรา</h3>
-      <div class="grid md:grid-cols-3 gap-10"><div id="feature-card-1" class="p-8 rounded-2xl shadow-lg fade-in card-hover">
-        <div id="feature-icon-1" class="w-20 h-20 rounded-2xl flex items-center justify-center mb-6 mx-auto">
-         <svg class="w-10 h-10" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-         </svg>
+      <h3 id="features-heading" class="text-center font-bold mb-10 md:mb-16 fade-in text-3xl md:text-4xl">จุดเด่นของเรา</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
+        <div id="feature-card-1" class="p-6 md:p-8 rounded-2xl shadow-lg fade-in card-hover">
+            <div id="feature-icon-1" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+             <svg class="w-8 h-8 md:w-10 md:h-10" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+             </svg>
+            </div>
+            <h4 id="feature-1-title" class="font-bold text-center mb-2 md:mb-4 text-2xl md:text-3xl">โปร่งใส</h4>
+            <p id="feature-1-desc" class="text-center opacity-80 text-base md:text-lg">บริหารงานอย่างโปร่งใส ตรวจสอบได้</p>
         </div>
-        <h4 id="feature-1-title" class="font-bold text-center mb-4 text-3xl">โปร่งใส</h4>
-        <p id="feature-1-desc" class="text-center opacity-80 text-lg">บริหารงานอย่างโปร่งใส ตรวจสอบได้</p>
-       </div><div id="feature-card-2" class="p-8 rounded-2xl shadow-lg fade-in card-hover">
-        <div id="feature-icon-2" class="w-20 h-20 rounded-2xl flex items-center justify-center mb-6 mx-auto">
-         <svg class="w-10 h-10" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-         </svg>
+        <div id="feature-card-2" class="p-6 md:p-8 rounded-2xl shadow-lg fade-in card-hover">
+            <div id="feature-icon-2" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+             <svg class="w-8 h-8 md:w-10 md:h-10" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+             </svg>
+            </div>
+            <h4 id="feature-2-title" class="font-bold text-center mb-2 md:mb-4 text-2xl md:text-3xl">รับฟังเสียง</h4>
+            <p id="feature-2-desc" class="text-center opacity-80 text-base md:text-lg">รับฟังความคิดเห็นจากนักเรียนทุกคน</p>
         </div>
-        <h4 id="feature-2-title" class="font-bold text-center mb-4 text-3xl">รับฟังเสียง</h4>
-        <p id="feature-2-desc" class="text-center opacity-80 text-lg">รับฟังความคิดเห็นจากนักเรียนทุกคน</p>
-       </div><div id="feature-card-3" class="p-8 rounded-2xl shadow-lg fade-in card-hover">
-        <div id="feature-icon-3" class="w-20 h-20 rounded-2xl flex items-center justify-center mb-6 mx-auto">
-         <svg class="w-10 h-10" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-         </svg>
+        <div id="feature-card-3" class="p-6 md:p-8 rounded-2xl shadow-lg fade-in card-hover">
+            <div id="feature-icon-3" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center mb-6 mx-auto">
+             <svg class="w-8 h-8 md:w-10 md:h-10" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+             </svg>
+            </div>
+            <h4 id="feature-3-title" class="font-bold text-center mb-2 md:mb-4 text-2xl md:text-3xl">ลงมือทำ</h4>
+            <p id="feature-3-desc" class="text-center opacity-80 text-base md:text-lg">ไม่เพียงแต่พูด แต่ลงมือทำจริง</p>
         </div>
-        <h4 id="feature-3-title" class="font-bold text-center mb-4 text-3xl">ลงมือทำ</h4>
-        <p id="feature-3-desc" class="text-center opacity-80 text-lg">ไม่เพียงแต่พูด แต่ลงมือทำจริง</p>
-       </div>
       </div>
      </div>
-    </section><section id="mission-section" class="py-20 px-6">
+    </section>
+
+    <section id="mission-section" class="py-12 md:py-20 px-4 md:px-6">
      <div class="max-w-4xl mx-auto">
-      <div id="mission-card" class="p-12 rounded-3xl shadow-2xl fade-in">
-       <h3 id="mission-heading" class="font-bold text-center mb-6 text-4xl">พันธกิจของเรา</h3>
-       <p id="mission-text" class="text-center leading-relaxed text-xl">เราเชื่อว่าทุกเสียงมีความสำคัญ เราจะทำงานเพื่อให้โรงเรียนเป็นสถานที่ที่นักเรียกทุกคนรู้สึกปลอดภัย มีความสุข และได้รับโอกาสในการพัฒนาตนเองอย่างเต็มที่</p>
+      <div id="mission-card" class="p-8 md:p-12 rounded-3xl shadow-2xl fade-in">
+       <h3 id="mission-heading" class="font-bold text-center mb-4 md:mb-6 text-3xl md:text-4xl">พันธกิจของเรา</h3>
+       <p id="mission-text" class="text-center leading-relaxed text-lg md:text-xl">เราเชื่อว่าทุกเสียงมีความสำคัญ เราจะทำงานเพื่อให้โรงเรียนเป็นสถานที่ที่นักเรียกทุกคนรู้สึกปลอดภัย มีความสุข และได้รับโอกาสในการพัฒนาตนเองอย่างเต็มที่</p>
       </div>
      </div>
-    </section><footer id="footer-home" class="py-8 text-center">
-     <p id="footer-text" class="footer-text-content text-lg">© 2026 Nawamin Forward Party - สงวนลิขสิทธิ์</p>
+    </section>
+    
+    <footer id="footer-home" class="py-8 text-center px-4">
+     <p id="footer-text" class="footer-text-content text-base md:text-lg">© 2026 Nawamin Forward Party - สงวนลิขสิทธิ์</p>
     </footer>
-   </div><div id="page-policies" style="display: none;">
-    <section class="py-16 px-6">
+   </div>
+
+   <div id="page-policies" style="display: none;">
+    <section class="py-12 md:py-16 px-4 md:px-6">
      <div class="max-w-6xl mx-auto">
-      <h2 id="policy-heading" class="text-center font-bold mb-12 fade-in text-4xl">นโยบายของเรา</h2><div class="flex justify-center space-x-4 mb-12"><button id="policy-tab-1" class="policy-tab-btn px-8 py-4 rounded-xl active-policy-tab text-lg" onclick="showPolicyTab(1)"> นโยบายด้านการเรียน </button> <button id="policy-tab-2" class="policy-tab-btn px-8 py-4 rounded-xl text-lg" onclick="showPolicyTab(2)"> นโยบายด้านกิจกรรม </button> <button id="policy-tab-3" class="policy-tab-btn px-8 py-4 rounded-xl text-lg" onclick="showPolicyTab(3)"> นโยบายด้านทั่วไป </button>
-      </div><div id="policy-content-1">
-       <div id="policy-card-1" class="p-10 rounded-3xl shadow-xl fade-in mb-8">
-        <div class="flex items-start space-x-6">
-         <div id="policy-icon-1" class="w-24 h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
-          <svg class="w-12 h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <polyline points="22 4 12 14.01 9 11.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <h2 id="policy-heading" class="text-center font-bold mb-8 md:mb-12 fade-in text-3xl md:text-4xl">นโยบายของเรา</h2>
+      
+      <div class="flex flex-col md:flex-row justify-center space-y-3 md:space-y-0 md:space-x-4 mb-8 md:mb-12">
+        <button id="policy-tab-1" class="policy-tab-btn px-6 md:px-8 py-3 md:py-4 rounded-xl active-policy-tab text-base md:text-lg w-full md:w-auto" onclick="showPolicyTab(1)"> นโยบายด้านการเรียน </button> 
+        <button id="policy-tab-2" class="policy-tab-btn px-6 md:px-8 py-3 md:py-4 rounded-xl text-base md:text-lg w-full md:w-auto" onclick="showPolicyTab(2)"> นโยบายด้านกิจกรรม </button> 
+        <button id="policy-tab-3" class="policy-tab-btn px-6 md:px-8 py-3 md:py-4 rounded-xl text-base md:text-lg w-full md:w-auto" onclick="showPolicyTab(3)"> นโยบายด้านทั่วไป </button>
+      </div>
+
+      <div id="policy-content-1">
+       <div id="policy-card-1" class="p-6 md:p-10 rounded-3xl shadow-xl fade-in mb-6 md:mb-8">
+        <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
+         <div id="policy-icon-1" class="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
+          <svg class="w-10 h-10 md:w-12 md:h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <polyline points="22 4 12 14.01 9 11.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
          </div>
-         <div class="flex-1">
-          <h3 id="policy-1-title" class="font-bold mb-4 text-3xl">Student Buddy</h3>
-          <p id="policy-1-desc" class="leading-relaxed opacity-80 text-lg">ให้นักเรียนสามารถเป็นติวเตอร์สอนเพื่อนๆผ่านคลิปผ่านระบบที่ทำ โดยได้รับเกียรติบัตรด้วย เราจะจัดทำระบบออนไลน์เพื่อให้นักเรียนสามารถอัพโหลดคลิปสอนและเรียนรู้จากเพื่อนๆ พร้อมมอบเกียรติบัตรเพื่อยกย่องผู้ที่มีส่วนร่วม</p>
+         <div class="flex-1 text-center md:text-left">
+          <h3 id="policy-1-title" class="font-bold mb-2 md:mb-4 text-2xl md:text-3xl">Student Buddy</h3>
+          <p id="policy-1-desc" class="leading-relaxed opacity-80 text-base md:text-lg">ให้นักเรียนสามารถเป็นติวเตอร์สอนเพื่อนๆผ่านคลิปผ่านระบบที่ทำ โดยได้รับเกียรติบัตรด้วย เราจะจัดทำระบบออนไลน์เพื่อให้นักเรียนสามารถอัพโหลดคลิปสอนและเรียนรู้จากเพื่อนๆ พร้อมมอบเกียรติบัตรเพื่อยกย่องผู้ที่มีส่วนร่วม</p>
          </div>
         </div>
        </div>
-       <div id="policy-card-1-2" class="p-10 rounded-3xl shadow-xl fade-in">
-        <div class="flex items-start space-x-6">
-         <div id="policy-icon-1-2" class="w-24 h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
-          <svg class="w-12 h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+       <div id="policy-card-1-2" class="p-6 md:p-10 rounded-3xl shadow-xl fade-in">
+        <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
+         <div id="policy-icon-1-2" class="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
+          <svg class="w-10 h-10 md:w-12 md:h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
          </div>
-         <div class="flex-1">
-          <h3 id="policy-1-2-title" class="font-bold mb-4 text-3xl">แนะแนวจากรุ่นพี่</h3>
-          <p id="policy-1-2-desc" class="leading-relaxed opacity-80 text-lg">จะมีการขอให้รุ่นพี่รุ่นก่อนๆที่จบไปแล้ว มารีวิวคณะ เตรียมตัวยังไง เปิดพอร์ต เพื่อเป็นแนวทางให้กับรุ่นน้องที่กำลังค้นหาตัวเองว่าอยากเป็นอะไร โดยจะลงในไอจีพรรค</p>
+         <div class="flex-1 text-center md:text-left">
+          <h3 id="policy-1-2-title" class="font-bold mb-2 md:mb-4 text-2xl md:text-3xl">แนะแนวจากรุ่นพี่</h3>
+          <p id="policy-1-2-desc" class="leading-relaxed opacity-80 text-base md:text-lg">จะมีการขอให้รุ่นพี่รุ่นก่อนๆที่จบไปแล้ว มารีวิวคณะ เตรียมตัวยังไง เปิดพอร์ต เพื่อเป็นแนวทางให้กับรุ่นน้องที่กำลังค้นหาตัวเองว่าอยากเป็นอะไร โดยจะลงในไอจีพรรค</p>
          </div>
         </div>
        </div>
-      </div><div id="policy-content-2" style="display: none;">
-       <div id="policy-card-2" class="p-10 rounded-3xl shadow-xl fade-in mb-8">
-        <div class="flex items-start space-x-6">
-         <div id="policy-icon-2" class="w-24 h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
-          <svg class="w-12 h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" /> <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </div>
+
+      <div id="policy-content-2" style="display: none;">
+       <div id="policy-card-2" class="p-6 md:p-10 rounded-3xl shadow-xl fade-in mb-6 md:mb-8">
+        <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
+         <div id="policy-icon-2" class="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
+          <svg class="w-10 h-10 md:w-12 md:h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" /> <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
           </svg>
          </div>
-         <div class="flex-1">
-          <h3 id="policy-2-title" class="font-bold mb-4 text-3xl">นวมินทร์ลีค</h3>
-          <p id="policy-2-desc" class="leading-relaxed opacity-80 text-lg">แข่งขันกีฬาต่างๆเช่น บาสเกตบอล วอลเลย์บอล ฟุตซอล เพื่อสนับสนุนความสามารถทางด้านกีฬาและความสามัคคี</p>
+         <div class="flex-1 text-center md:text-left">
+          <h3 id="policy-2-title" class="font-bold mb-2 md:mb-4 text-2xl md:text-3xl">นวมินทร์ลีค</h3>
+          <p id="policy-2-desc" class="leading-relaxed opacity-80 text-base md:text-lg">แข่งขันกีฬาต่างๆเช่น บาสเกตบอล วอลเลย์บอล ฟุตซอล เพื่อสนับสนุนความสามารถทางด้านกีฬาและความสามัคคี</p>
          </div>
         </div>
        </div>
-       <div id="policy-card-2-2" class="p-10 rounded-3xl shadow-xl fade-in mb-8">
-        <div class="flex items-start space-x-6">
-         <div id="policy-icon-2-2" class="w-24 h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
-          <svg class="w-12 h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" /> <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+       <div id="policy-card-2-2" class="p-6 md:p-10 rounded-3xl shadow-xl fade-in mb-6 md:mb-8">
+        <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
+         <div id="policy-icon-2-2" class="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
+          <svg class="w-10 h-10 md:w-12 md:h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" /> <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
           </svg>
          </div>
-         <div class="flex-1">
-          <h3 id="policy-2-2-title" class="font-bold mb-4 text-3xl">ยืมอุปกรณ์กีฬา</h3>
-          <p id="policy-2-2-desc" class="leading-relaxed opacity-80 text-lg">บริการให้ยืมอุปกรณ์กีฬา</p>
+         <div class="flex-1 text-center md:text-left">
+          <h3 id="policy-2-2-title" class="font-bold mb-2 md:mb-4 text-2xl md:text-3xl">ยืมอุปกรณ์กีฬา</h3>
+          <p id="policy-2-2-desc" class="leading-relaxed opacity-80 text-base md:text-lg">บริการให้ยืมอุปกรณ์กีฬา</p>
          </div>
         </div>
        </div>
-       <div id="policy-card-2-3" class="p-10 rounded-3xl shadow-xl fade-in mb-8">
-        <div class="flex items-start space-x-6">
-         <div id="policy-icon-2-3" class="w-24 h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
-          <svg class="w-12 h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18" stroke="currentColor" stroke-width="2" /> <path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 17h5M17 7h5" stroke="currentColor" stroke-width="2" />
+       <div id="policy-card-2-3" class="p-6 md:p-10 rounded-3xl shadow-xl fade-in mb-6 md:mb-8">
+        <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
+         <div id="policy-icon-2-3" class="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
+          <svg class="w-10 h-10 md:w-12 md:h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18" stroke="currentColor" stroke-width="2" /> <path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 17h5M17 7h5" stroke="currentColor" stroke-width="2" />
           </svg>
          </div>
-         <div class="flex-1">
-          <h3 id="policy-2-3-title" class="font-bold mb-4 text-3xl">Content Contest</h3>
-          <p id="policy-2-3-desc" class="leading-relaxed opacity-80 text-lg">จัดการแข่งขันประกวดการทำคลิปสั้นลง TikTok ในหัวข้อเกี่ยวกับการโปรโมทโรงเรียน เพื่อให้นักเรียนได้แสดงความสามารถด้านความคิดสร้างสรรค์ การแสดงและการตัดต่อวิดีโอ และยังเป็นการช่วยโปรโมทโรงเรียนของเราอีกด้วย</p>
+         <div class="flex-1 text-center md:text-left">
+          <h3 id="policy-2-3-title" class="font-bold mb-2 md:mb-4 text-2xl md:text-3xl">Content Contest</h3>
+          <p id="policy-2-3-desc" class="leading-relaxed opacity-80 text-base md:text-lg">จัดการแข่งขันประกวดการทำคลิปสั้นลง TikTok ในหัวข้อเกี่ยวกับการโปรโมทโรงเรียน เพื่อให้นักเรียนได้แสดงความสามารถด้านความคิดสร้างสรรค์ การแสดงและการตัดต่อวิดีโอ และยังเป็นการช่วยโปรโมทโรงเรียนของเราอีกด้วย</p>
          </div>
         </div>
        </div>
-       <div id="policy-card-2-4" class="p-10 rounded-3xl shadow-xl fade-in">
-        <div class="flex items-start space-x-6">
-         <div id="policy-icon-2-4" class="w-24 h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
-          <svg class="w-12 h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <polyline points="22 4 12 14.01 9 11.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+       <div id="policy-card-2-4" class="p-6 md:p-10 rounded-3xl shadow-xl fade-in">
+        <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
+         <div id="policy-icon-2-4" class="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
+          <svg class="w-10 h-10 md:w-12 md:h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <polyline points="22 4 12 14.01 9 11.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
          </div>
-         <div class="flex-1">
-          <h3 id="policy-2-4-title" class="font-bold mb-4 text-3xl">Linedance</h3>
-          <p id="policy-2-4-desc" class="leading-relaxed opacity-80 text-lg">จัดกิจกรรมออกกำลังกายทุกวันศุกร์ หน้าเสาธงตอนเช้าเต้นแอโรบิค เพื่อเสริมสร้างสุขภาพที่ดีของนักเรียน</p>
+         <div class="flex-1 text-center md:text-left">
+          <h3 id="policy-2-4-title" class="font-bold mb-2 md:mb-4 text-2xl md:text-3xl">Linedance</h3>
+          <p id="policy-2-4-desc" class="leading-relaxed opacity-80 text-base md:text-lg">จัดกิจกรรมออกกำลังกายทุกวันศุกร์ หน้าเสาธงตอนเช้าเต้นแอโรบิค เพื่อเสริมสร้างสุขภาพที่ดีของนักเรียน</p>
          </div>
         </div>
        </div>
-      </div><div id="policy-content-3" style="display: none;">
-       <div id="policy-card-3" class="p-10 rounded-3xl shadow-xl fade-in mb-8">
-        <div class="flex items-start space-x-6">
-         <div id="policy-icon-3" class="w-24 h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
-          <svg class="w-12 h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </div>
+      
+      <div id="policy-content-3" style="display: none;">
+       <div id="policy-card-3" class="p-6 md:p-10 rounded-3xl shadow-xl fade-in mb-6 md:mb-8">
+        <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
+         <div id="policy-icon-3" class="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
+          <svg class="w-10 h-10 md:w-12 md:h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
          </div>
-         <div class="flex-1">
-          <h3 id="policy-3-title" class="font-bold mb-4 text-3xl">เรดไว้พัฒนา</h3>
-          <p id="policy-3-desc" class="leading-relaxed opacity-80 text-lg">ในแต่ละเดือนเราจะมีการสำรวจสถานที่และสิ่งต่างๆ ภายในโรงเรียนที่ชำรุดเสียหาย เช่น สนามกีฬา ห้องน้ำ ห้องเรียน จะมีการจัดทำรายงานแจ้งให้ทางโรงเรียนทราบเพื่อดำเนินการแก้ไข และรณรงค์ให้น้องๆ และพี่ๆ ช่วยกันรักษาความสะอาดและทรัพย์สินของโรงเรียน</p>
+         <div class="flex-1 text-center md:text-left">
+          <h3 id="policy-3-title" class="font-bold mb-2 md:mb-4 text-2xl md:text-3xl">เรดไว้พัฒนา</h3>
+          <p id="policy-3-desc" class="leading-relaxed opacity-80 text-base md:text-lg">ในแต่ละเดือนเราจะมีการสำรวจสถานที่และสิ่งต่างๆ ภายในโรงเรียนที่ชำรุดเสียหาย เช่น สนามกีฬา ห้องน้ำ ห้องเรียน จะมีการจัดทำรายงานแจ้งให้ทางโรงเรียนทราบเพื่อดำเนินการแก้ไข และรณรงค์ให้น้องๆ และพี่ๆ ช่วยกันรักษาความสะอาดและทรัพย์สินของโรงเรียน</p>
          </div>
         </div>
        </div>
-       <div id="policy-card-3-2" class="p-10 rounded-3xl shadow-xl fade-in mb-8">
-        <div class="flex items-start space-x-6">
-         <div id="policy-icon-3-2" class="w-24 h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
-          <svg class="w-12 h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M12.5 16c3.5 0 6.5 1 6.5 3v2h-13v-2c0 -2 3 -3 6.5 -3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+       <div id="policy-card-3-2" class="p-6 md:p-10 rounded-3xl shadow-xl fade-in mb-6 md:mb-8">
+        <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
+         <div id="policy-icon-3-2" class="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
+          <svg class="w-10 h-10 md:w-12 md:h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M12.5 16c3.5 0 6.5 1 6.5 3v2h-13v-2c0 -2 3 -3 6.5 -3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
          </div>
-         <div class="flex-1">
-          <h3 id="policy-3-2-title" class="font-bold mb-4 text-3xl">หลีดนวมินทร์</h3>
-          <p id="policy-3-2-desc" class="leading-relaxed opacity-80 text-lg">เปิดรับสมัครเป็นรอบใช้แสดงในงานและโอกาสต่างๆ เช่น งานเกษียณอายุราชการ วันสถาปนาโรงเรียน เป็นต้น</p>
+         <div class="flex-1 text-center md:text-left">
+          <h3 id="policy-3-2-title" class="font-bold mb-2 md:mb-4 text-2xl md:text-3xl">หลีดนวมินทร์</h3>
+          <p id="policy-3-2-desc" class="leading-relaxed opacity-80 text-base md:text-lg">เปิดรับสมัครเป็นรอบใช้แสดงในงานและโอกาสต่างๆ เช่น งานเกษียณอายุราชการ วันสถาปนาโรงเรียน เป็นต้น</p>
          </div>
         </div>
        </div>
-       <div id="policy-card-3-3" class="p-10 rounded-3xl shadow-xl fade-in mb-8">
-        <div class="flex items-start space-x-6">
-         <div id="policy-icon-3-3" class="w-24 h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
-          <svg class="w-12 h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2" /> <path d="M12 2C8.5 2 6 4.5 6 8c0 4.5 6 11 6 11s6-6.5 6-11c0-3.5-2.5-6-6-6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+       <div id="policy-card-3-3" class="p-6 md:p-10 rounded-3xl shadow-xl fade-in mb-6 md:mb-8">
+        <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
+         <div id="policy-icon-3-3" class="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
+          <svg class="w-10 h-10 md:w-12 md:h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2" /> <path d="M12 2C8.5 2 6 4.5 6 8c0 4.5 6 11 6 11s6-6.5 6-11c0-3.5-2.5-6-6-6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
          </div>
-         <div class="flex-1">
-          <h3 id="policy-3-3-title" class="font-bold mb-4 text-3xl">Mascot NMR.SW.</h3>
-          <p id="policy-3-3-desc" class="leading-relaxed opacity-80 text-lg">จัดประกวดออกแบบตัวมาสคอตของโรงเรียน เพื่อสร้างอัตลักษณ์ให้โรงเรียน ต่อยอดทำของที่ระลึกได้</p>
+         <div class="flex-1 text-center md:text-left">
+          <h3 id="policy-3-3-title" class="font-bold mb-2 md:mb-4 text-2xl md:text-3xl">Mascot NMR.SW.</h3>
+          <p id="policy-3-3-desc" class="leading-relaxed opacity-80 text-base md:text-lg">จัดประกวดออกแบบตัวมาสคอตของโรงเรียน เพื่อสร้างอัตลักษณ์ให้โรงเรียน ต่อยอดทำของที่ระลึกได้</p>
          </div>
         </div>
        </div>
-       <div id="policy-card-3-4" class="p-10 rounded-3xl shadow-xl fade-in">
-        <div class="flex items-start space-x-6">
-         <div id="policy-icon-3-4" class="w-24 h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
-          <svg class="w-12 h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+       <div id="policy-card-3-4" class="p-6 md:p-10 rounded-3xl shadow-xl fade-in">
+        <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
+         <div id="policy-icon-3-4" class="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center flex-shrink-0">
+          <svg class="w-10 h-10 md:w-12 md:h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
          </div>
-         <div class="flex-1">
-          <h3 id="policy-3-4-title" class="font-bold mb-4 text-3xl">SW3.DNA</h3>
-          <p id="policy-3-4-desc" class="leading-relaxed opacity-80 text-lg">สานต่อกิจกรรมของรุ่นพี่ปีที่ผ่านมา เช่น สานสัมพันธ์พี่-น้องรหัส, การแข่งกีฬานวมินทร์ลีค, การจัดการแข่งขัน Cover dance, ตลาดนัดนวมินทร์ สิ่งเดิมๆ แต่จะเพิ่มเติมความพิเศษ เราจะปรับปรุงสิ่งต่างๆ แก้ไขปัญหาที่เคยเกิดขึ้นให้ดีขึ้น ทำให้นักเรียนมีส่วนร่วมในกิจกรรมมากขึ้น</p>
+         <div class="flex-1 text-center md:text-left">
+          <h3 id="policy-3-4-title" class="font-bold mb-2 md:mb-4 text-2xl md:text-3xl">SW3.DNA</h3>
+          <p id="policy-3-4-desc" class="leading-relaxed opacity-80 text-base md:text-lg">สานต่อกิจกรรมของรุ่นพี่ปีที่ผ่านมา เช่น สานสัมพันธ์พี่-น้องรหัส, การแข่งกีฬานวมินทร์ลีค, การจัดการแข่งขัน Cover dance, ตลาดนัดนวมินทร์ สิ่งเดิมๆ แต่จะเพิ่มเติมความพิเศษ เราจะปรับปรุงสิ่งต่างๆ แก้ไขปัญหาที่เคยเกิดขึ้นให้ดีขึ้น ทำให้นักเรียนมีส่วนร่วมในกิจกรรมมากขึ้น</p>
          </div>
         </div>
        </div>
       </div>
      </div>
     </section>
-    <footer id="footer-policies" class="py-8 text-center">
-     <p class="footer-text-content text-lg">© 2026 Nawamin Forward Party - สงวนลิขสิทธิ์</p>
+    <footer id="footer-policies" class="py-8 text-center px-4">
+     <p class="footer-text-content text-base md:text-lg">© 2026 Nawamin Forward Party - สงวนลิขสิทธิ์</p>
     </footer>
-   </div><div id="page-team" style="display: none;">
-    <section class="py-16 px-6">
+   </div>
+
+   <div id="page-team" style="display: none;">
+    <section class="py-12 md:py-16 px-4 md:px-6">
      <div class="max-w-7xl mx-auto">
-      <h2 id="team-heading" class="text-center font-bold mb-16 fade-in text-4xl">สมาชิกของเรา</h2>
-      <div id="team-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8"></div>
+      <h2 id="team-heading" class="text-center font-bold mb-10 md:mb-16 fade-in text-3xl md:text-4xl">สมาชิกของเรา</h2>
+      <div id="team-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8"></div>
      </div>
     </section>
-    <footer id="footer-team" class="py-8 text-center mt-16">
-     <p class="footer-text-content text-lg">© 2026 Nawamin Forward Party - สงวนลิขสิทธิ์</p>
+    <footer id="footer-team" class="py-8 text-center mt-16 px-4">
+     <p class="footer-text-content text-base md:text-lg">© 2026 Nawamin Forward Party - สงวนลิขสิทธิ์</p>
     </footer>
-   </div><div id="member-modal" class="fixed inset-0 z-50 flex items-center justify-center modal-overlay" style="display: none; background-color: rgba(0,0,0,0.5);">
-    <div id="modal-content" class="relative max-w-2xl w-full mx-4 p-10 rounded-3xl shadow-2xl"><button id="close-modal-btn" onclick="closeMemberModal()" class="absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
-      <svg class="w-6 h-6" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round" /> <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-      </svg></button>
-     <div class="text-center mb-8">
-      <div id="modal-avatar" class="w-40 h-40 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden">
-       <svg id="modal-avatar-svg" class="w-24 h-24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+   </div>
+
+   <div id="member-modal" class="fixed inset-0 z-50 flex items-center justify-center modal-overlay p-4" style="display: none; background-color: rgba(0,0,0,0.5);">
+    <div id="modal-content" class="relative max-w-2xl w-full p-6 md:p-10 rounded-3xl shadow-2xl overflow-y-auto max-h-[90vh]">
+        <button id="close-modal-btn" onclick="closeMemberModal()" class="absolute top-4 right-4 md:top-6 md:right-6 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
+            <svg class="w-5 h-5 md:w-6 md:h-6" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round" /> <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </button>
+     <div class="text-center mb-6 md:mb-8">
+      <div id="modal-avatar" class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-4 md:mb-6 flex items-center justify-center overflow-hidden">
+       <svg id="modal-avatar-svg" class="w-20 h-20 md:w-24 md:h-24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
        </svg>
       </div>
-      <h3 id="modal-member-name" class="font-bold mb-2 text-4xl">ชื่อสมาชิก</h3>
-      <p id="modal-member-role" class="opacity-80 mb-6 text-2xl">ตำแหน่ง</p>
+      <h3 id="modal-member-name" class="font-bold mb-2 text-2xl md:text-4xl">ชื่อสมาชิก</h3>
+      <p id="modal-member-role" class="opacity-80 mb-4 md:mb-6 text-xl md:text-2xl">ตำแหน่ง</p>
      </div>
      <div class="space-y-4">
-      <div id="modal-info-card" class="p-6 rounded-2xl">
-       <p id="modal-role-label" class="font-semibold mb-2 text-lg">ตำแหน่ง</p>
-       <p id="modal-member-role-display" class="opacity-80 text-lg">ตำแหน่ง</p>
+      <div id="modal-info-card" class="p-4 md:p-6 rounded-2xl">
+       <p id="modal-role-label" class="font-semibold mb-2 text-base md:text-lg">ตำแหน่ง</p>
+       <p id="modal-member-role-display" class="opacity-80 text-base md:text-lg">ตำแหน่ง</p>
       </div>
-      <div id="modal-classroom-card" class="p-6 rounded-2xl">
-       <p id="modal-classroom-label" class="font-semibold mb-2 text-lg">ชั้นเรียน</p>
-       <p id="modal-member-classroom" class="opacity-80 text-lg">ชั้นเรียน</p>
+      <div id="modal-classroom-card" class="p-4 md:p-6 rounded-2xl">
+       <p id="modal-classroom-label" class="font-semibold mb-2 text-base md:text-lg">ชั้นเรียน</p>
+       <p id="modal-member-classroom" class="opacity-80 text-base md:text-lg">ชั้นเรียน</p>
+      </div>
+      <div id="modal-history-card" class="p-4 md:p-6 rounded-2xl">
+       <p id="modal-history-label" class="font-semibold mb-2 text-base md:text-lg">ประวัติการทำงาน/ผลงาน</p>
+       <p id="modal-member-history" class="opacity-80 text-base md:text-lg whitespace-pre-line">-</p>
       </div>
      </div>
     </div>
@@ -401,26 +469,32 @@
       member_1_role: "ประธานพรรค",
       member_1_classroom: "ชั้นมัธยมศึกษาปีที่ 5/4",
       member_1_image: "",
+      member_1_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568 ตำแหน่ง กิจกรรมวิชาการ\n - เลขานุการคณะสีเขียว ราชวดีเกมส์ ปีการศึกษา 2568",
       member_2_name: "นางสาวกรฌ์ณภัทรส์ ธัญธนาโภคิน",
       member_2_role: "รองประธานพรรค",
       member_2_classroom: "ชั้นมัธยมศึกษาปีที่ 5/2",
+      member_2_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568 ตำแหน่ง ประชาสัมพันธ์",
       member_2_image: "",
       member_3_name: "นางสาววรฤทัย เพ่งพิศ",
       member_3_role: "รองประธานพรรค",
       member_3_classroom: "ชั้นมัธยมศึกษาปีที่ 5/4",
+      member_3_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568 \n ตำแหน่ง กิจกรรมศิลปวัฒนธรรม\n - ประธานคณะสีเขียว ราชวดีเกมส์ ปีการศึกษา 2568",
       member_3_image: "",
       member_4_name: "นางสาวณิชาพร หวิงปัด",
       member_4_role: "เลขานุการ",
       member_4_classroom: "ชั้นมัธยมศึกษาปีที่ 5/2",
+      member_4_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568 ตำแหน่ง กิจกรรมภายนอก",
       member_4_image: "",
       member_5_name: "นายศศิวัฒน์ เพชรอินทร์",
       member_5_role: "เหรัญญิก",
       member_5_classroom: "ชั้นมัธยมศึกษาปีที่ 5/3",
       member_5_image: "",
+      member_5_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568 ตำแหน่ง เหรัญญิก\n - ประธานคณะสีชมพู ราชวดีเกมส์ ปีการศึกษา 2568",
       member_6_name: "นายปิยังกูร วิริยะวัฒนะ",
       member_6_role: "แผนงานและนโยบาย",
       member_6_classroom: "ชั้นมัธยมศึกษาปีที่ 5/2",
       member_6_image: "https://media.discordapp.net/attachments/1378006203178946610/1461650016115495123/29E59FAA-2EF7-4C32-BFCB-AA8AEDA91228.jpeg?ex=696b5327&is=696a01a7&hm=73b1df64d623e4fcbbcd10bd94f7f6ab9d487bb87ae7ea78f8532b590a6be79b&=&format=webp&width=640&height=960",
+      member_6_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568 \nตำแหน่ง สารสนเทศและการออกแบบ\n - เลขานุการคณะสีฟ้า ราชวดีเกมส์ ปีการศึกษา 2568",
       member_7_name: "นางสาวพัทธ์ธีรา คีรีเนรมิตร",
       member_7_role: "ประเมินและประกันคุณภาพ",
       member_7_classroom: "ชั้นมัธยมศึกษาปีที่ 4/5",
@@ -428,6 +502,7 @@
       member_8_name: "นายสืบสกุล สุประภากุล",
       member_8_role: "กิจกรรมกีฬาและสาธารณสุข",
       member_8_classroom: "ชั้นมัธยมศึกษาปีที่ 5/7",
+      member_8_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568 \n - รองประธานคณะสีฟ้า ราชวดีเกมส์ ปีการศึกษา 2568",
       member_8_image: "",
       member_9_name: "นางสาวชญานิศ หุวสมิต",
       member_9_role: "กิจกรรมภายนอก",
@@ -456,6 +531,7 @@
       member_15_name: "นางสาวนิรดา พันธ์ทอง",
       member_15_role: "ประชาสัมพันธ์และสื่อสารองค์กร",
       member_15_classroom: "ชั้นมัธยมศึกษาปีที่ 5/5",
+      member_15_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568 ตำแหน่ง โสตทัศนูปกรณ์",
       member_15_image: "",
       member_16_name: "นางสาวอริยา เพชรคุ้ม",
       member_16_role: "ประชาสัมพันธ์และสื่อสารองค์กร",
@@ -468,6 +544,7 @@
       member_18_name: "นายสิรวิชญ์ ภู่ทองสุข",
       member_18_role: "พัสดุ",
       member_18_classroom: "ชั้นมัธยมศึกษาปีที่ 5/5",
+      member_18_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568",
       member_18_image: "",
       member_19_name: "นางสาวจานีน พันผูก",
       member_19_role: "ป้องกันยาเสพติดและอบายมุข",
@@ -504,15 +581,23 @@
       member_27_name: "นายเติมพงศ์ วงศ์เชียงเพ็ง",
       member_27_role: "สารวัตรนักเรียน",
       member_27_classroom: "ชั้นมัธยมศึกษาปีที่ 5/5",
+      member_27_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568 ตำแหน่ง แผนงานและนโยบาย",
       member_27_image: "",
       member_28_name: "นายวรกณต์ บุญพันธ์",
       member_28_role: "สารวัตรนักเรียน",
       member_28_classroom: "ชั้นมัธยมศึกษาปีที่ 5/5",
+      member_28_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568",
       member_28_image: "",
       footer_text: "© 2026 Nawamin Forward Party - สงวนลิขสิทธิ์"
     };
 
     let currentConfig = { ...defaultConfig };
+    
+    // Toggle Mobile Menu Function
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('open');
+    }
 
     function showMemberModal(memberIndex, config) {
       const modal = document.getElementById('member-modal');
@@ -525,6 +610,7 @@
       const memberRole = config[`member_${memberIndex}_role`] || "";
       const memberClassroom = config[`member_${memberIndex}_classroom`] || "";
       const memberImage = config[`member_${memberIndex}_image`];
+      const memberHistory = config[`member_${memberIndex}_history`] || "-"; // Get history or dash
       
       const modalContent = document.getElementById('modal-content');
       modalContent.style.backgroundColor = config.policy_card_bg || defaultConfig.policy_card_bg;
@@ -535,6 +621,7 @@
       document.getElementById('modal-member-role').textContent = memberRole;
       document.getElementById('modal-member-role-display').textContent = memberRole;
       document.getElementById('modal-member-classroom').textContent = memberClassroom;
+      document.getElementById('modal-member-history').textContent = memberHistory; // Set history text
       
       // Update Modal Avatar
       const avatarContainer = document.getElementById('modal-avatar');
@@ -544,7 +631,7 @@
       } else {
          const heroColor = config.hero_bg_gradient_start || defaultConfig.hero_bg_gradient_start;
          avatarContainer.innerHTML = `
-           <svg id="modal-avatar-svg" class="w-24 h-24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: ${heroColor}">
+           <svg id="modal-avatar-svg" class="w-20 h-20 md:w-24 md:h-24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: ${heroColor}">
              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> 
              <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
            </svg>
@@ -567,6 +654,12 @@
       document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.toggle('active', link.getAttribute('data-page') === pageName);
       });
+      
+      // Close mobile menu if open
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenu && mobileMenu.classList.contains('open')) {
+          mobileMenu.classList.remove('open');
+      }
       
       document.querySelector('.w-full.h-full.overflow-auto').scrollTop = 0;
     }
@@ -630,6 +723,11 @@
          btn.style.color = currentConfig.hero_bg_gradient_start;
       });
 
+      // Also style mobile links
+      document.querySelectorAll('.nav-link-mobile').forEach(btn => {
+          btn.style.color = currentConfig.text_color;
+      });
+
       const styleSheet = document.createElement("style");
       styleSheet.innerText = `.active-policy-tab { border-bottom-color: ${currentConfig.hero_bg_gradient_start} !important; color: ${currentConfig.hero_bg_gradient_end} !important; }`;
       document.head.appendChild(styleSheet);
@@ -680,15 +778,15 @@
           }
 
           const card = document.createElement('div');
-          card.className = 'text-center fade-in cursor-pointer card-hover p-6 rounded-xl transition-all';
+          card.className = 'text-center fade-in cursor-pointer card-hover p-4 md:p-6 rounded-xl transition-all';
           card.style.backgroundColor = currentConfig.policy_card_bg;
           card.onclick = () => showMemberModal(i, currentConfig);
           card.innerHTML = `
             <div class="w-24 h-24 md:w-32 md:h-32 rounded-full mx-auto mb-4 flex items-center justify-center member-avatar overflow-hidden" style="background-color: ${currentConfig.member_avatar_bg};">
               ${avatarContent}
             </div>
-            <h4 class="font-bold mb-1" style="font-size: ${baseSize * 1.3}px;">${name}</h4>
-            <p class="opacity-80" style="font-size: ${baseSize * 1.0}px;">${role}</p>
+            <h4 class="font-bold mb-1 text-base md:text-xl" style="font-size: ${baseSize * 1.3}px;">${name}</h4>
+            <p class="opacity-80 text-sm md:text-base" style="font-size: ${baseSize * 1.0}px;">${role}</p>
           `;
           teamGrid.appendChild(card);
         }
