@@ -3,7 +3,7 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nawamin Forward Party - ผู้สมัครคณะกรรมการนักเรียน</title>
+  <title>Nawamin Forward Party</title>
   
   <script>
     window.elementSdk = {
@@ -122,7 +122,8 @@
     <div class="max-w-7xl mx-auto px-6 py-4">
      <div class="flex items-center justify-between">
       <div class="flex items-center space-x-3">
-       <svg class="w-10 h-10" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+       <img id="navbar-logo-img" class="w-15 h-15 object-contain" style="display: none;" alt="Party Logo">
+       <svg id="navbar-logo-default" class="w-10 h-10" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
        </svg>
        <div>
         <h1 id="nav-org-name" class="font-bold text-2xl md:text-3xl">Nawamin Forward Party</h1>
@@ -346,6 +347,7 @@
   <script>
     const defaultConfig = {
       org_name: "Nawamin Forward Party",
+      logo_url: "https://media.discordapp.net/attachments/1378006203178946610/1461658122094379152/Untitled_design_2.png?ex=696b5ab4&is=696a0934&hm=31bfdaed87898114f70c7a29a89a93433687bdd5dee60f760b52277012ba06a6&=&format=webp&quality=lossless&width=2080&height=2080",
       tagline: "ผู้สมัครคณะกรรมการนักเรียน",
       hero_title: "ก้าวไปข้างหน้าด้วยกัน",
       hero_subtitle: "พัฒนาโรงเรียนให้ดีขึ้น เพื่อนักเรียนทุกคน",
@@ -592,8 +594,20 @@
       navbar.style.backgroundColor = currentConfig.navbar_bg_color;
       navbar.style.color = currentConfig.text_color;
 
-      const navbarSvg = navbar.querySelector('svg');
-      if(navbarSvg) navbarSvg.style.color = currentConfig.hero_bg_gradient_start;
+      // Logo handling
+      const navLogoImg = document.getElementById('navbar-logo-img');
+      const navLogoDefault = document.getElementById('navbar-logo-default');
+      
+      if (currentConfig.logo_url && currentConfig.logo_url.trim() !== '') {
+          navLogoImg.src = currentConfig.logo_url;
+          navLogoImg.style.display = 'block';
+          navLogoDefault.style.display = 'none';
+      } else {
+          navLogoImg.style.display = 'none';
+          navLogoDefault.style.display = 'block';
+          // Update SVG color as before
+          if(navLogoDefault) navLogoDefault.style.color = currentConfig.hero_bg_gradient_start;
+      }
 
       const hero = document.getElementById('hero');
       hero.style.background = `linear-gradient(135deg, ${currentConfig.hero_bg_gradient_start} 0%, ${currentConfig.hero_bg_gradient_end} 100%)`;
