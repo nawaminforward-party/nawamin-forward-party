@@ -50,7 +50,7 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    
+      
     .slide-in {
       animation: slideIn 0.8s ease-out;
     }
@@ -156,6 +156,7 @@
         <button class="nav-link active font-medium text-lg" data-page="home" onclick="showPage('home')">หน้าหลัก</button> 
         <button class="nav-link font-medium text-lg" data-page="policies" onclick="showPage('policies')">นโยบาย</button> 
         <button class="nav-link font-medium text-lg" data-page="team" onclick="showPage('team')">สมาชิก</button>
+        <button class="nav-link font-medium text-lg" data-page="candidate" onclick="showPage('candidate')">ผู้นำพรรค</button>
       </div>
 
       <div class="md:hidden">
@@ -171,6 +172,7 @@
         <button class="nav-link-mobile font-medium text-lg text-left py-2 border-b border-gray-100/20" onclick="showPage('home'); toggleMobileMenu()">หน้าหลัก</button> 
         <button class="nav-link-mobile font-medium text-lg text-left py-2 border-b border-gray-100/20" onclick="showPage('policies'); toggleMobileMenu()">นโยบาย</button> 
         <button class="nav-link-mobile font-medium text-lg text-left py-2" onclick="showPage('team'); toggleMobileMenu()">สมาชิก</button>
+        <button class="nav-link-mobile font-medium text-lg text-left py-2 border-t border-gray-100/20" onclick="showPage('candidate'); toggleMobileMenu()">ผู้นำพรรค</button>
      </div>
     </div>
    </nav>
@@ -183,7 +185,7 @@
       <button id="cta-button" class="w-full md:w-auto px-10 py-4 md:py-5 text-lg md:text-xl rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all hover:scale-105"> ดูนโยบายของเรา </button>
      </div>
     </section>
-    <section id="game-banner" class="py-12 md:py-20 px-4 relative z-10 fade-in">
+        <section id="game-banner" class="py-12 md:py-20 px-4 relative z-10 fade-in">
      <div class="max-w-4xl mx-auto">
        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-red-700 to-red-700 p-6 md:p-8 shadow-xl hover:shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
         
@@ -212,7 +214,7 @@
       </a>
      </div>
     </section>
-    <section id="features-section" class="py-12 md:py-20 px-4 md:px-6">
+    <section id="features-section" class="py-2 md:py-2 px-2 md:px-4">
      <div class="max-w-6xl mx-auto">
       <h3 id="features-heading" class="text-center font-bold mb-10 md:mb-16 fade-in text-3xl md:text-4xl">จุดเด่นของเรา</h3>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
@@ -444,7 +446,6 @@
      <p class="footer-text-content text-base md:text-lg">© 2026 Nawamin Forward Party - สงวนลิขสิทธิ์</p>
     </footer>
    </div>
-
    <div id="member-modal" class="fixed inset-0 z-50 flex items-center justify-center modal-overlay p-4" style="display: none; background-color: rgba(0,0,0,0.5);">
     <div id="modal-content" class="relative max-w-2xl w-full p-6 md:p-10 rounded-3xl shadow-2xl overflow-y-auto max-h-[90vh]">
         <button id="close-modal-btn" onclick="closeMemberModal()" class="absolute top-4 right-4 md:top-6 md:right-6 w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
@@ -473,9 +474,249 @@
        <p id="modal-member-history" class="opacity-80 text-lg md:text-xl whitespace-pre-line">-</p>
       </div>
      </div>
-    </div>
+    </div> 
    </div>
-  </div>
+  <div id="page-candidate" style="display: none;" class="bg-gradient-to-r from-red-50 to-white min-h-screen relative overflow-hidden">
+
+      <div class="max-w-screen-2xl mx-auto px-4 md:px-12 py-8 md:py-16 relative z-10">
+         <div class="flex flex-col lg:flex-row items-stretch">
+            
+            <div class="w-full lg:w-1/2 relative flex items-end justify-center lg:justify-start mb-8 lg:mb-0">
+               <img src="https://img5.pic.in.th/file/secure-sv1/Untitled-design-119375bcc3ee26bb28.png" 
+                    class="relative z-5 w-auto h-[550px] md:h-[650px] lg:h-[800px] object-contain object-bottom drop-shadow-xl lg:translate-x-12"
+                    alt="Candidate">
+            </div>
+
+            <div class="w-full lg:w-1/2 lg:pl-16 pt-4 md:pt-8 lg:pt-12">
+               
+               <div class="mb-8 text-center lg:text-left">
+                  <h3 class="text-xl md:text-2xl font-bold text-red-600 mb-2">ผู้สมัครประธานนักเรียน</h3>
+                  <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4 leading-tight">
+                     พนมแก้ว ภิญโญ
+                  </h1>
+                  <p class="text-xl md:text-2xl font-medium text-red-600 italic">
+                     “ เปลี่ยนโรงเรียนให้ดีกว่า ด้วยพลังของพวกเรา ”
+                  </p>
+               </div>
+
+               <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  
+                  <div>
+                     <div class="space-y-6">
+                        <div>
+                           <span class="font-bold text-red-600 text-lg">ชื่อเล่น</span>
+                           <span class="text-gray-800 text-lg ml-2">ผ้าแพร</span>
+                        </div>
+                        <div>
+                           <span class="font-bold text-red-600 text-lg">ชั้นเรียน</span>
+                           <span class="text-gray-800 text-lg ml-2">ม.5/4</span>
+                        </div>
+                        
+                        <div>
+                           <h4 class="font-bold text-red-600 text-lg mb-2">การศึกษา</h4>
+                           <ul class="list-disc list-inside text-gray-700 space-y-1">
+                              <li>ชั้นมัธยมศึกษาปีที่ 5 โรงเรียนนวมินทราชินูทิศ สตรีวิทยา พุทธมณฑล</li>
+                              <li>สายการเรียน วิทย์-คณิต</li>
+                           </ul>
+                        </div>
+
+                        <div>
+                           <h4 class="font-bold text-red-600 text-lg mb-2">ประสบการณ์ทำงาน</h4>
+                           <ul class="list-disc list-inside text-gray-700 space-y-1">
+                              <li>คณะทำงานสภานักเรียนปีการศึกษา 2568</li>
+                              <li>เลขานุการคณะสีเขียว ราชวดีเกมส์</li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="relative pl-4 md:pl-0">
+                     <div class="absolute left-0 top-2 bottom-0 w-1 bg-red-200"></div>
+
+                     <div class="space-y-15 pl-8 relative">
+                        
+                        <div class="relative">
+                           <div class="absolute -left-[39px] top-1 w-5 h-5 rounded-full bg-red-500 border-4 border-white shadow-sm"></div>
+                           <h4 class="text-2xl font-bold text-red-600 mb-1">2569</h4>
+                           <p class="font-bold text-gray-800 text-lg">ผู้สมัครประธานนักเรียน</p>
+                           <p class="text-gray-600">พรรค Nawamin Forward Party</p>
+                        </div>
+
+                        <div class="relative">
+                           <div class="absolute -left-[39px] top-1 w-5 h-5 rounded-full bg-red-400 border-4 border-white shadow-sm"></div>
+                           <h4 class="text-2xl font-bold text-red-500 mb-1">2568</h4>
+                           <p class="font-bold text-gray-800 text-lg">คณะกรรมการนักเรียน</p>
+                           <p class="text-gray-600">ตำแหน่ง กิจกรรมวิชาการ</p>
+                           <p class="font-bold text-gray-800 text-lg">เลขานุการคณะสีเขียว ราชวดีเกมส์</p>
+                        </div>
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="max-w-screen-2xl mx-auto px-4 md:px-12 py-8 md:py-16 relative z-10">
+         <div class="flex flex-col lg:flex-row items-stretch">
+            
+            <div class="w-full lg:w-1/2 relative flex items-end justify-center lg:justify-start mb-8 lg:mb-0">
+               <img src="https://img2.pic.in.th/109fe65a5034727c8.png" 
+                    class="relative z-5 w-auto h-[550px] md:h-[650px] lg:h-[800px] object-contain object-bottom drop-shadow-xl lg:translate-x-12"
+                    alt="Candidate">
+            </div>
+
+            <div class="w-full lg:w-1/2 lg:pl-16 pt-4 md:pt-8 lg:pt-12">
+               
+               <div class="mb-8 text-center lg:text-left">
+                  <h3 class="text-xl md:text-2xl font-bold text-red-600 mb-2">ผู้สมัครรองประธานนักเรียนคนที่ 1</h3>
+                  <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-0 leading-tight">
+                     กรฌ์ณภัทรส์
+                  </h1>
+                  <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-2 leading-tight">
+                     ธัญธนาโภคิน
+                  </h1>
+                  <p class="text-xl md:text-2xl font-medium text-red-600 italic">
+                     “ เปลี่ยนโรงเรียนให้ดีกว่า ด้วยพลังของพวกเรา ”
+                  </p>
+               </div>
+
+               <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  
+                  <div>
+                     <div class="space-y-6">
+                        <div>
+                           <span class="font-bold text-red-600 text-lg">ชื่อเล่น</span>
+                           <span class="text-gray-800 text-lg ml-2">ฟ้า</span>
+                        </div>
+                        <div>
+                           <span class="font-bold text-red-600 text-lg">ชั้นเรียน</span>
+                           <span class="text-gray-800 text-lg ml-2">ม.5/2</span>
+                        </div>
+                        
+                        <div>
+                           <h4 class="font-bold text-red-600 text-lg mb-2">การศึกษา</h4>
+                           <ul class="list-disc list-inside text-gray-700 space-y-1">
+                              <li>ชั้นมัธยมศึกษาปีที่ 5 โรงเรียนนวมินทราชินูทิศ สตรีวิทยา พุทธมณฑล</li>
+                              <li>สายการเรียน ห้องเรียนพิเศษ Gifted วิทย์-คณิต</li>
+                           </ul>
+                        </div>
+
+                        <div>
+                           <h4 class="font-bold text-red-600 text-lg mb-2">ประสบการณ์ทำงาน</h4>
+                           <ul class="list-disc list-inside text-gray-700 space-y-1">
+                              <li>คณะทำงานสภานักเรียนปีการศึกษา 2568</li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="relative pl-4 md:pl-0">
+                     <div class="absolute left-0 top-2 bottom-0 w-1 bg-red-200"></div>
+
+                     <div class="space-y-15 pl-8 relative">
+                        
+                        <div class="relative">
+                           <div class="absolute -left-[39px] top-1 w-5 h-5 rounded-full bg-red-500 border-4 border-white shadow-sm"></div>
+                           <h4 class="text-2xl font-bold text-red-600 mb-1">2569</h4>
+                           <p class="font-bold text-gray-800 text-lg">ผู้สมัครรองประธานนักเรียนคนที่ 1</p>
+                           <p class="text-gray-600">พรรค Nawamin Forward Party</p>
+                        </div>
+
+                        <div class="relative">
+                           <div class="absolute -left-[39px] top-1 w-5 h-5 rounded-full bg-red-400 border-4 border-white shadow-sm"></div>
+                           <h4 class="text-2xl font-bold text-red-500 mb-1">2568</h4>
+                           <p class="font-bold text-gray-800 text-lg">คณะกรรมการนักเรียน</p>
+                           <p class="text-gray-600">ตำแหน่ง ประชาสัมพันธ์</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="max-w-screen-2xl mx-auto px-4 md:px-12 py-8 md:py-16 relative z-10">
+         <div class="flex flex-col lg:flex-row items-stretch">
+            
+            <div class="w-full lg:w-1/2 relative flex items-end justify-center lg:justify-start mb-8 lg:mb-0">
+               <img src="https://img5.pic.in.th/file/secure-sv1/Untitled-design-89cf55b574cd2ca19.png" 
+                    class="relative z-5 w-auto h-[550px] md:h-[650px] lg:h-[800px] object-contain object-bottom drop-shadow-xl lg:translate-x-12"
+                    alt="Candidate">
+            </div>
+
+            <div class="w-full lg:w-1/2 lg:pl-16 pt-4 md:pt-8 lg:pt-12">
+               
+               <div class="mb-8 text-center lg:text-left">
+                  <h3 class="text-xl md:text-2xl font-bold text-red-600 mb-2">ผู้สมัครรองประธานนักเรียนคนที่ 2</h3>
+                  <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-0 leading-tight">
+                     วรฤทัย เพ่งพิศ
+                  </h1>
+                  <p class="text-xl md:text-2xl font-medium text-red-600 italic">
+                     “ เปลี่ยนโรงเรียนให้ดีกว่า ด้วยพลังของพวกเรา ”
+                  </p>
+               </div>
+
+               <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  
+                  <div>
+                     <div class="space-y-6">
+                        <div>
+                           <span class="font-bold text-red-600 text-lg">ชื่อเล่น</span>
+                           <span class="text-gray-800 text-lg ml-2">มาย</span>
+                        </div>
+                        <div>
+                           <span class="font-bold text-red-600 text-lg">ชั้นเรียน</span>
+                           <span class="text-gray-800 text-lg ml-2">ม.5/4</span>
+                        </div>
+                        
+                        <div>
+                           <h4 class="font-bold text-red-600 text-lg mb-2">การศึกษา</h4>
+                           <ul class="list-disc list-inside text-gray-700 space-y-1">
+                              <li>ชั้นมัธยมศึกษาปีที่ 5 โรงเรียนนวมินทราชินูทิศ สตรีวิทยา พุทธมณฑล</li>
+                              <li>สายการเรียน วิทย์-คณิต</li>
+                           </ul>
+                        </div>
+
+                        <div>
+                           <h4 class="font-bold text-red-600 text-lg mb-2">ประสบการณ์ทำงาน</h4>
+                           <ul class="list-disc list-inside text-gray-700 space-y-1">
+                              <li>คณะทำงานสภานักเรียนปีการศึกษา 2568</li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="relative pl-4 md:pl-0">
+                     <div class="absolute left-0 top-2 bottom-0 w-1 bg-red-200"></div>
+
+                        <div class="space-y-15 pl-8 relative">
+                        
+                        <div class="relative">
+                           <div class="absolute -left-[39px] top-1 w-5 h-5 rounded-full bg-red-500 border-4 border-white shadow-sm"></div>
+                           <h4 class="text-2xl font-bold text-red-600 mb-1">2569</h4>
+                           <p class="font-bold text-gray-800 text-lg">ผู้สมัครรองประธานนักเรียนคนที่ 1</p>
+                           <p class="text-gray-600">พรรค Nawamin Forward Party</p>
+                        </div>
+
+                        <div class="relative">
+                           <div class="absolute -left-[39px] top-1 w-5 h-5 rounded-full bg-red-400 border-4 border-white shadow-sm"></div>
+                           <h4 class="text-2xl font-bold text-red-500 mb-1">2568</h4>
+                           <p class="font-bold text-gray-800 text-lg">คณะกรรมการนักเรียน</p>
+                           <p class="text-gray-600">ตำแหน่ง กิจกรรมศิลปวัฒนธรรม</p>
+                           <p class="font-bold text-gray-800 text-lg">ประธานคณะสีเขียว ราชวดีเกมส์</p>
+                        </div>
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+         </div>
+      </div>
+      <footer class="py-6 text-center bg-white/50 backdrop-blur-sm relative z-20">
+        <p class="text-gray-500 text-sm md:text-base">© 2026 Nawamin Forward Party</p>
+      </footer>
+   </div>
   <script>
     const defaultConfig = {
       org_name: "Nawamin Forward Party",
@@ -538,163 +779,165 @@
       member_1_name: "น.ส.พนมแก้ว ภิญโญ",
       member_1_role: "ประธานนักเรียน",
       member_1_classroom: "ชั้นมัธยมศึกษาปีที่ 5/4",
-      member_1_image: "",
+      member_1_image: "https://img5.pic.in.th/file/secure-sv1/S__44302466.jpg",
       member_1_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568 ตำแหน่ง กิจกรรมวิชาการ\n - เลขานุการคณะสีเขียว ราชวดีเกมส์ ปีการศึกษา 2568",
 
       member_2_name: "น.ส.กรฌ์ณภัทรส์ ธัญธนาโภคิน",
       member_2_role: "รองประธานนักเรียน",
       member_2_classroom: "ชั้นมัธยมศึกษาปีที่ 5/2",
       member_2_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568 ตำแหน่ง ประชาสัมพันธ์",
-      member_2_image: "",
+      member_2_image: "https://img5.pic.in.th/file/secure-sv1/-----086ec1273848a4ec.jpeg",
 
       member_3_name: "น.ส.วรฤทัย เพ่งพิศ",
       member_3_role: "รองประธานนักเรียน",
       member_3_classroom: "ชั้นมัธยมศึกษาปีที่ 5/4",
       member_3_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568 \n ตำแหน่ง กิจกรรมศิลปวัฒนธรรม\n - ประธานคณะสีเขียว ราชวดีเกมส์ ปีการศึกษา 2568",
-      member_3_image: "",
+      member_3_image: "https://img2.pic.in.th/Untitled-design-10.png",
 
       member_4_name: "น.ส.ณิชาพร หวิงปัด",
       member_4_role: "เลขานุการ",
       member_4_classroom: "ชั้นมัธยมศึกษาปีที่ 5/2",
       member_4_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568 ตำแหน่ง กิจกรรมภายนอก",
-      member_4_image: "",
+      member_4_image: "https://img5.pic.in.th/file/secure-sv1/-----2e7d41ed7478fef0.jpg",
 
       member_5_name: "นายศศิวัฒน์ เพชรอินทร์",
       member_5_role: "เหรัญญิก",
       member_5_classroom: "ชั้นมัธยมศึกษาปีที่ 5/3",
-      member_5_image: "",
+      member_5_image: "https://img5.pic.in.th/file/secure-sv1/------11b123f900e33d362.jpg",
       member_5_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568 ตำแหน่ง เหรัญญิก\n - ประธานคณะสีชมพู ราชวดีเกมส์ ปีการศึกษา 2568",
 
       member_6_name: "นายปิยังกูร วิริยะวัฒนะ",
       member_6_role: "แผนงานและนโยบาย",
       member_6_classroom: "ชั้นมัธยมศึกษาปีที่ 5/2",
-      member_6_image: "https://img2.pic.in.th/29E59FAA-2EF7-4C32-BFCB-AA8AEDA91228.jpeg",
+      member_6_image: "https://img5.pic.in.th/file/secure-sv1/-----597fa0e98788b8a5.jpg",
       member_6_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568 \nตำแหน่ง สารสนเทศและการออกแบบ\n - เลขานุการคณะสีฟ้า ราชวดีเกมส์ ปีการศึกษา 2568",
 
       member_7_name: "น.ส.พัทธ์ธีรา คีรีเนรมิตร",
       member_7_role: "ประเมินและประกันคุณภาพ",
       member_7_classroom: "ชั้นมัธยมศึกษาปีที่ 4/5",
-      member_7_image: "",
+      member_7_image: "https://img2.pic.in.th/----3f8b70f2ca490d58.jpg",
 
       member_8_name: "นายสืบสกุล สุประภากุล",
       member_8_role: "กิจกรรมกีฬาและสาธารณสุข",
       member_8_classroom: "ชั้นมัธยมศึกษาปีที่ 5/7",
       member_8_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568 \n - รองประธานคณะสีฟ้า ราชวดีเกมส์ ปีการศึกษา 2568",
-      member_8_image: "",
+      member_8_image: "https://img2.pic.in.th/---eb96a0afb6ba90a6.jpg",
 
       member_9_name: "น.ส.ชญานิศ หุวสมิต",
       member_9_role: "กิจกรรมภายนอก",
       member_9_classroom: "ชั้นมัธยมศึกษาปีที่ 4/13",
-      member_9_image: "",
+      member_9_image: "https://img2.pic.in.th/S__7798827.jpg",
 
-      member_10_name: "น.ส.ณัฐฎาภรณ์ ภานุโสภา",
+      member_10_name: "น.ส.ณัฐญาภรณ์ ภานุโสภา",
       member_10_role: "กิจกรรมภายใน",
       member_10_classroom: "ชั้นมัธยมศึกษาปีที่ 4/4",
-      member_10_image: "",
+      member_10_image: "https://img5.pic.in.th/file/secure-sv1/IMG_407928804fb4d3844903.jpeg",
 
-      member_11_name: "น.ส.ชญาพร ลิลาคุณารักษ์",
+      member_11_name: "น.ส.ชญาพร ลีลาคุณารักษ์",
       member_11_role: "กิจกรรมวิชาการ",
       member_11_classroom: "ชั้นมัธยมศึกษาปีที่ 4/8",
-      member_11_image: "",
+      member_11_image: "https://img5.pic.in.th/file/secure-sv1/---d324941ded77f4d7.jpg",
 
       member_12_name: "น.ส.ฐิติชญา จัดเฮียม",
       member_12_role: "กิจกรรมศิลปวัฒนธรรม",
       member_12_classroom: "ชั้นมัธยมศึกษาปีที่ 4/7",
-      member_12_image: "",
+      member_12_image: "https://img2.pic.in.th/---d0028ca944e63145.jpg",
 
       member_13_name: "น.ส.ปภาดา จำปาหอม",
       member_13_role: "สถานที่",
       member_13_classroom: "ชั้นมัธยมศึกษาปีที่ 5/4",
-      member_13_image: "",
+      member_13_image: "https://img2.pic.in.th/123106.jpg",
+      member_13_history: "- เลขานุการคณะสีเขียว ราชวดีเกมส์ ปีการศึกษา 2568",
 
       member_14_name: "น.ส.ณัฎฐ์ภัสสร โพธิ์เทศ",
       member_14_role: "สถานที่",
       member_14_classroom: "ชั้นมัธยมศึกษาปีที่ 5/2",
-      member_14_image: "",
+      member_14_image: "https://img5.pic.in.th/file/secure-sv1/S__60006410.jpg",
 
       member_15_name: "น.ส.ชิชา ศรีมงคล",
       member_15_role: "สถานที่",
       member_15_classroom: "ชั้นมัธยมศึกษาปีที่ 5/2",
-      member_15_image: "",
+      member_15_image: "https://img5.pic.in.th/file/secure-sv1/-----a808a6b465875750.jpeg",
 
       member_16_name: "น.ส.นิรดา พันธ์ทอง",
       member_16_role: "ประชาสัมพันธ์และสื่อสารองค์กร",
       member_16_classroom: "ชั้นมัธยมศึกษาปีที่ 5/5",
       member_16_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568 ตำแหน่ง โสตทัศนูปกรณ์",
-      member_16_image: "",
+      member_16_image: "https://img5.pic.in.th/file/secure-sv1/-----0cedbd926ca9a3ba.jpg",
 
       member_17_name: "น.ส.ภัทรวดี เลิศกระโทก",
       member_17_role: "ประชาสัมพันธ์และสื่อสารองค์กร",
       member_17_classroom: "ชั้นมัธยมศึกษาปีที่ 5/6",
-      member_17_image: "",
+      member_17_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568",
+      member_17_image: "https://img5.pic.in.th/file/secure-sv1/-----e9aae5f32e725d76.jpg",
 
       member_18_name: "น.ส.อริยา เพชรคุ้ม",
       member_18_role: "ประชาสัมพันธ์และสื่อสารองค์กร",
       member_18_classroom: "ชั้นมัธยมศึกษาปีที่ 5/4",
-      member_18_image: "",
+      member_18_image: "https://img5.pic.in.th/file/secure-sv1/-----35933af50d708faf.jpg",
 
       member_19_name: "น.ส.ช่อแก้ว แตงมณี",
       member_19_role: "พัสดุ",
       member_19_classroom: "ชั้นมัธยมศึกษาปีที่ 4/14",
-      member_19_image: "",
+      member_19_image: "https://img2.pic.in.th/-----3113296438e9ef9e.jpg",
 
       member_20_name: "นายสิรวิชญ์ ภู่ทองสุข",
       member_20_role: "พัสดุ",
       member_20_classroom: "ชั้นมัธยมศึกษาปีที่ 5/5",
       member_20_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568",
-      member_20_image: "",
+      member_20_image: "https://img2.pic.in.th/---6019ff76da9113ca.jpg",
 
       member_21_name: "น.ส.จานีน พันผูก",
       member_21_role: "ป้องกันยาเสพติดและอบายมุข",
       member_21_classroom: "ชั้นมัธยมศึกษาปีที่ 4/14",
-      member_21_image: "",
+      member_21_image: "https://img5.pic.in.th/file/secure-sv1/----abba7b659e41ad5b.jpg",
 
       member_22_name: "น.ส.นริศรา เล่าอุย",
       member_22_role: "สวัสดิการและงานทั่วไป",
       member_22_classroom: "ชั้นมัธยมศึกษาปีที่ 4/14",
-      member_22_image: "",
+      member_22_image: "https://img2.pic.in.th/-----1231f3573ed69866.jpg",
 
       member_23_name: "น.ส.สุธีรา เลี้ยงเจริญ",
       member_23_role: "สวัสดิการและงานทั่วไป",
       member_23_classroom: "ชั้นมัธยมศึกษาปีที่ 4/8",
-      member_23_image: "",
+      member_23_image: "https://img2.pic.in.th/-----1e3ce1ae32d18cbf.jpg",
 
       member_24_name: "น.ส.เรณุกา ปรีดีขนิษฐ์",
       member_24_role: "สารสนเทศและออกแบบ",
       member_24_classroom: "ชั้นมัธยมศึกษาปีที่ 5/9",
-      member_24_image: "",
+      member_24_image: "https://img5.pic.in.th/file/secure-sv1/-----9ec1204918d30c86.png",
 
       member_25_name: "น.ส.รุจีรัตน์ นามวิชา",
       member_25_role: "สารสนเทศและออกแบบ",
       member_25_classroom: "ชั้นมัธยมศึกษาปีที่ 5/13",
-      member_25_image: "",
+      member_25_image: "https://img2.pic.in.th/IMG_4082.jpeg",
 
       member_26_name: "น.ส.พนัชกร คงอยู่",
       member_26_role: "สารสนเทศและออกแบบ",
       member_26_classroom: "ชั้นมัธยมศึกษาปีที่ 5/7",
-      member_26_image: "",
+      member_26_image: "https://img2.pic.in.th/-----599374d0a23966dd.jpg",
 
       member_27_name: "น.ส.ณัชฐวิมล หงษ์พานิชกุล",
       member_27_role: "โสตทัศนูปกรณ์",
       member_27_classroom: "ชั้นมัธยมศึกษาปีที่ 4/4",
-      member_27_image: "",
+      member_27_image: "https://img5.pic.in.th/file/secure-sv1/-----c8b29cd98fa915c5.jpg",
 
       member_28_name: "น.ส.ลดา เนืองแก้ว",
       member_28_role: "โสตทัศนูปกรณ์",
       member_28_classroom: "ชั้นมัธยมศึกษาปีที่ 4/10",
-      member_28_image: "",
+      member_28_image: "https://img5.pic.in.th/file/secure-sv1/-----308119057f14065c.jpg",
 
       member_29_name: "นายเติมพงศ์ วงศ์เชียงเพ็ง",
       member_29_role: "สารวัตรนักเรียน",
       member_29_classroom: "ชั้นมัธยมศึกษาปีที่ 5/5",
       member_29_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568 ตำแหน่ง แผนงานและนโยบาย",
-      member_29_image: "",
+      member_29_image: "https://img5.pic.in.th/file/secure-sv1/----7f7ae2d9eecb35c5.jpeg",
 
       member_30_name: "นายวรกณต์ บุญพันธ์",
       member_30_role: "สารวัตรนักเรียน",
       member_30_classroom: "ชั้นมัธยมศึกษาปีที่ 5/5",
       member_30_history: "- คณะกรรมการนักเรียนปีการศึกษา 2568",
-      member_30_image: "",
+      member_30_image: "https://img5.pic.in.th/file/secure-sv1/---e94a339c5256848a.jpg",
       footer_text: "© 2026 Nawamin Forward Party - สงวนลิขสิทธิ์"
     };
 
@@ -756,13 +999,18 @@
       document.getElementById('page-home').style.display = 'none';
       document.getElementById('page-policies').style.display = 'none';
       document.getElementById('page-team').style.display = 'none';
+      
+      // เพิ่มส่วนนี้เข้าไป
+      const pageCandidate = document.getElementById('page-candidate');
+      if (pageCandidate) pageCandidate.style.display = 'none';
+
+      // แสดงหน้าปัจจุบัน
       document.getElementById('page-' + pageName).style.display = 'block';
       
       document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.toggle('active', link.getAttribute('data-page') === pageName);
       });
       
-      // Close mobile menu if open
       const mobileMenu = document.getElementById('mobile-menu');
       if (mobileMenu && mobileMenu.classList.contains('open')) {
           mobileMenu.classList.remove('open');
@@ -949,11 +1197,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
